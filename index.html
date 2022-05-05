@@ -240,14 +240,9 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
-                    <div class="btn-group" id="carouselButton">
-                        <button class="btn btn-danger btn-sm" id="carousel-pause">
-                            <span class="fa fa-pause"></span>
-                        </button>
-                        <button class="btn btn-danger btn-sm" id="carousel-play">
-                            <span class="fa fa-play"></span>
-                        </button>
-                    </div>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span id="carousel-button-icon" class="fa fa-pause"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -260,8 +255,11 @@
                 <div class="media">
                     <img class="d-flex mr-3 img-thumbnail align-self-center" src="img/uthappizza.png" alt="uthappizza">
                     <div class="media-body">
-                        <h2 class="mt-0">Uthappizza <span class="badge badge-danger">HOT</span><span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                        <p class="d-none d-sm-block">A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.</p>
+                        <h2 class="mt-0">Uthappizza <span class="badge badge-danger">HOT</span><span
+                                class="badge badge-pill badge-secondary">$4.99</span></h2>
+                        <p class="d-none d-sm-block">A unique combination of Indian Uthappam (pancake) and Italian
+                            pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur
+                            chillies and Buffalo Paneer.</p>
                     </div>
                 </div>
             </div>
@@ -276,7 +274,9 @@
                 <div class="media">
                     <div class="media-body">
                         <h2>Weekend Grand Buffet <span class="badge badge-danger">NEW</span></h2>
-                        <p class="d-none d-sm-block">Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
+                        <p class="d-none d-sm-block">Featuring mouthwatering combinations with a choice of five
+                            different salads, six enticing appetizers, six main entrees and five choicest desserts. Free
+                            flowing bubbly and soft drinks. All for just $19.99 per person </p>
                     </div>
                     <img class="d-flex mr-3 img-thumbnail align-self-center" src="img/buffet.png" alt="buffet">
                 </div>
@@ -293,7 +293,9 @@
                     <div class="media-body">
                         <h2 class="mt-0">Alberto Somayya</h2>
                         <h4>Executive Chef</h4>
-                        <p class="d-none d-sm-block">Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. </p>
+                        <p class="d-none d-sm-block">Award winning three-star Michelin chef with wide International
+                            experience having worked closely with whos-who in the culinary world, he specializes in
+                            creating mouthwatering Indo-Italian fusion experiences. </p>
                     </div>
                 </div>
             </div>
@@ -351,17 +353,24 @@
         <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script>
-            $(document).ready(function(){
-                $("#mycarousel").carousel( { interval: 2000 } );
-                $("#carousel-pause").click(function(){
-                    $("#mycarousel").carousel('pause');
+            $(document).ready(function () {
+                $("#mycarousel").carousel({ interval: 2000 });
+                $("#carouselButton").click(function () {
+                    if ($("#carouselButton").children("span").hasClass('fa-pause')) {
+                        $("#mycarousel").carousel('pause');
+                        $("#carouselButton").children("span").removeClass('fa-pause');
+                        $("#carouselButton").children("span").addClass('fa-play');
+                    }
+                    else if ($("#carouselButton").children("span").hasClass('fa-play')) {
+                        $("#mycarousel").carousel('cycle');
+                        $("#carouselButton").children("span").removeClass('fa-play');
+                        $("#carouselButton").children("span").addClass('fa-pause');
+                    }
                 });
-                $("#carousel-play").click(function(){
-                    $("#mycarousel").carousel('cycle');
-                });
+
             });
         </script>
-    
+
 </body>
 
 </html>
